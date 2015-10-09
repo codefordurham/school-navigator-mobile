@@ -4,7 +4,6 @@ var app = angular.module('schools', ['ionic']);
 // place to setup data to display in view
 app.controller('SchoolsCtrl', function($http, $scope) {
 
-  $scope.Geocoder = 'false';
   $scope.charter = [];
   $scope.magnet = [];
   $scope.assigned = [];
@@ -19,7 +18,6 @@ app.controller('SchoolsCtrl', function($http, $scope) {
       geocoder = new google.maps.Geocoder();
       geocoder.geocode( { 'address': lookup_address}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
-          $scope.Geocoder = 'true';
           var geo = results[0].geometry.location;
           $http.get('https://schools.codefordurham.com/api/schools/?format=json&longitude=' + geo.lng() + '&latitude=' + geo.lat())
             .success(function(response) {
