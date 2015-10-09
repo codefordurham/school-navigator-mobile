@@ -29,6 +29,7 @@
               <input type="search" placeholder="Enter an address" ng-model="form.query">
             </label>
             <input type="submit" class="button button-small button-positive" value="Search">
+            <span>{{ Geocoder }}</span>
         </div>
       </form>
         <div ng-repeat="level in levels">
@@ -44,7 +45,7 @@
           </div>
         </div>
       </ion-content></ion-tab>
-      
+
 
       <ion-tab title="Charter" icon-on="ion-key" icon-off="ion-key">
       <ion-header-bar class="bar-positive">
