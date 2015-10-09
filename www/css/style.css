@@ -1,0 +1,38 @@
+div.item-divider {
+    background: green;
+    color: white;
+}
+
+div.item-divider a:link, div.item-divider a:hover, div.item-divider a:visited,  div.item-divider a:active {
+    color: white;
+}
+
+span.distance {
+    position: absolute;
+    right: 5px;
+    font-size: .8em;
+}
+
+h3.school-title {
+    white-space: normal;
+}
+
+p.school-mission {
+    white-space: normal;
+}
+
+h2.level-elementary,
+h2.level-secondary,
+h2.level-middle,
+h2.level-high {
+    text-transform: capitalize;
+    color: white;
+    padding: 3px;
+}
+
+h2.level-elementary { background-color: #48BC6B; }
+
+h2.level-secondary, h2.level-middle { background-color: #3F899E; }
+
+h2.level-high { background-color: #4F61AD;}
+
