@@ -14,7 +14,7 @@ app.controller('SchoolsCtrl', function($http, $scope) {
   $scope.search = function() {
 
     if ($scope.form.query) {
-      var lookup_address = $scope.form.query;
+      lookup_address = ($scope.form.query.indexOf("durham") == -1) ? $scope.form.query + " Durham County NC": $scope.form.query;
       geocoder = new google.maps.Geocoder();
       geocoder.geocode( { 'address': lookup_address}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
