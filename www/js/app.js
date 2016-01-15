@@ -1,8 +1,8 @@
 (function() {
-var app = angular.module('schools', ['ionic']);
+var app = angular.module('schools', ['ionic', 'ngCordova']);
 
 // place to setup data to display in view
-app.controller('SchoolsCtrl', function($http, $scope) {
+app.controller('SchoolsCtrl', function($http, $scope, $cordovaGeolocation, $ionicLoading) {
 
   $scope.charter = [];
   $scope.magnet = [];
@@ -45,9 +45,49 @@ app.controller('SchoolsCtrl', function($http, $scope) {
     }
   };
 
+  $scope.geolocateMe = function() {
 
+        $ionicLoading.show({
+            template: '<ion-spinner icon="bubbles"></ion-spinner><br/>Acquiring location!'
+        });
 
+        var posOptions = {
+            enableHighAccuracy: true,
+            timeout: 20000,
+            maximumAge: 0
+        };
+
+        $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
+            var lat  = position.coords.latitude;
+            var lng = position.coords.longitude;
+
+            $http.get('https://durhamschoolnavigator.org/api/schools/?format=json&longitude=' + lng + '&latitude=' + lat)
+            .success(function(response) {
+              $scope.charter = [];
+              $scope.magnet = [];
+              $scope.assigned = [];
+              angular.forEach(response, function(school) {
+                // TODO: Add back in 'specialty' when the desktop front end bug is fixed
+                if (school.eligibility === 'option') {
+                  if (school.type === 'charter') {
+                    $scope.charter.push(school);
+                  } else if (school.type === 'magnet') {
+                    $scope.magnet.push(school);
+                  }
+                } else {
+                  $scope.assigned.push(school);
+                }
+              });
+            });
+            $ionicLoading.hide();
+
+        }, function(err) {
+            $ionicLoading.hide();
+            console.log(err);
+        });
+  };
 });
+
 
 
 app.directive('searchBar', function(){
