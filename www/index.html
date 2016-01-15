@@ -23,20 +23,7 @@
         <h1 class="title">Durham Schools &#x2014; Neighborhood</h1>
       </ion-header-bar>
       <ion-content>
-      <form ng-submit="search()" class="list">
-        <div class="item item-input-inset">
-            <label class="item item-input-wrapper">
-              <i class="icon ion-search placeholder-icon"></i>
-              <input id="search" type="search" placeholder="Enter an address" ng-model="form.query">
-              <a ng-if="form.query != ''"
-                 on-touch="form.query=''">
-                 <i class="icon ion-ios-close placeholder-icon"></i>
-              </a>
-            </label>
-            <input type="submit" class="button button-small button-positive" value="Search">
-
-        </div>
-      </form>
+        <search-bar></search-bar>
         <div ng-repeat="level in levels">
           <h2 class="level-{{ level }}" ng-show="(assigned | filter: {&apos;level&apos;: level}).length">{{ level }}</h2>
           <div class="card" ng-repeat="school in assigned | filter: {&apos;level&apos;: level} | orderBy:[&apos;preference&apos;, &apos;distance&apos;]:true">
@@ -58,15 +45,7 @@
       </ion-header-bar>
 
       <ion-content>
-      <form ng-submit="search()" class="list">
-        <div class="item item-input-inset">
-            <label class="item item-input-wrapper">
-              <i class="icon ion-search placeholder-icon"></i>
-              <input type="search" placeholder="Enter an address" ng-model="form.query">
-            </label>
-            <input type="submit" class="button button-small button-positive" value="Search">
-        </div>
-      </form>
+        <search-bar></search-bar>
         <div ng-repeat="level in levels">
           <h2 class="level-{{ level }}" ng-show="(charter | filter: {&apos;level&apos;: level}).length">{{ level }}</h2>
           <div class="card" ng-repeat="school in charter | filter: {&apos;level&apos;: level} | orderBy:[&apos;preference&apos;, &apos;distance&apos;]:true">
@@ -88,16 +67,7 @@
         <h1 class="title">Durham Schools &#x2014; Magnet</h1>
       </ion-header-bar>
       <ion-content>
-      <form ng-submit="search()" class="list">
-        <div class="item item-input-inset">
-            <label class="item item-input-wrapper">
-              <i class="icon ion-search placeholder-icon"></i>
-              <input type="search" placeholder="Enter an address" ng-model="form.query">
-            </label>
-            <input type="submit" class="button button-small button-positive" value="Search">
-        </div>
-      </form>
-
+        <search-bar></search-bar>
         <div ng-repeat="level in levels">
           <h2 class="level-{{ level }}" ng-show="(magnet | filter: {&apos;level&apos;: level}).length">{{ level }}</h2>
           <div class="card" ng-repeat="school in magnet | filter: {&apos;level&apos;: level} | orderBy:[&apos;preference&apos;, &apos;distance&apos;]:true">

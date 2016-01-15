@@ -50,6 +50,14 @@ app.controller('SchoolsCtrl', function($http, $scope) {
 });
 
 
+app.directive('searchBar', function(){
+  return {
+    templateUrl: 'templates/search-bar.html',
+    restrict: 'E'
+  };
+});
+
+
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
