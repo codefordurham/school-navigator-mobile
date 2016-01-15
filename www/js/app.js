@@ -86,8 +86,35 @@ app.controller('SchoolsCtrl', function($http, $scope, $cordovaGeolocation, $ioni
             console.log(err);
         });
   };
+
 });
 
+
+app.controller('MapCtrl', function($http, $scope, $ionicModal) {
+  $ionicModal.fromTemplateUrl('templates/school-map.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+
+  $scope.openModal = function(school_id) {
+  $http.get('https://durhamschoolnavigator.org/api/schools/detail/' + school_id  + '/?format=json')
+    .success(function(response) {
+      console.log(response);
+    });
+
+    $scope.modal.show();
+  };
+
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+});
 
 
 app.directive('searchBar', function(){

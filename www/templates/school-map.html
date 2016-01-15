@@ -1,0 +1,12 @@
+      <ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-positive">
+          <h1 class="title">School Map</h1>
+          <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+        </ion-header-bar>
+        <ion-content class="padding">
+          <div >
+            <leaflet id='map2'  height="300px" width="100%" ng-if="onTabTwo"></leaflet>
+          </div>
+        </ion-content>
+      </ion-modal-view>
+

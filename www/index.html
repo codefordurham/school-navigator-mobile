@@ -32,6 +32,7 @@
               <div class="item item-text-wrap">
                 <span class="distance">{{ school.distance | number:2}} mi</span>
                 <h3 class="school-title">{{ school.name }}</h3>
+                <h4 ng-controller='MapCtrl' ng-click="openModal(school.id)">MODAL</h4>
                 <p>{{ school.address }}</p>
                 <p>Grades: {{ school.grade_min }} - {{ school.grade_max }}</p>
                 <a href="{{ school.website_url }}" target="_blank"><p>{{ school.website_url }}</p></a>
