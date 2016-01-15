@@ -19,7 +19,7 @@ app.controller('SchoolsCtrl', function($http, $scope) {
       geocoder.geocode( { 'address': lookup_address}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
           var geo = results[0].geometry.location;
-          $http.get('https://schools.codefordurham.com/api/schools/?format=json&longitude=' + geo.lng() + '&latitude=' + geo.lat())
+          $http.get('https://durhamschoolnavigator.org/api/schools/?format=json&longitude=' + geo.lng() + '&latitude=' + geo.lat())
             .success(function(response) {
               $scope.charter = [];
               $scope.magnet = [];
