@@ -36,3 +36,6 @@ h2.level-secondary, h2.level-middle { background-color: #3F899E; }
 
 h2.level-high { background-color: #4F61AD;}
 
+#search {
+    width: 100%;
+}
